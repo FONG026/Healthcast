@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epidemic_Prediction</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  </head>
+
+
+
+  <body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+    <!-- Container -->
+    <div class="container">
+      <!-- header start -->
+      <header class="d-flex flex-wrap  justify-content-center py-3 mb-4
+        border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto
+          text-dark text-decoration-none">
+          <img src="{{ url_for('static', filename='asset/logo.png') }}" alt="" width="76" height="76">  &nbsp; &nbsp; &nbsp;
+          
+          <span class="fs-4"> Projet EUreka </span>
+        </a>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="#" class="nav-link"
+              aria-current="page">Accueil</a></li>
+          <li class="nav-item"><a href="" class="nav-link"
+              data-bs-toggle="modal" data-bs-target="#exampleModal">Pourquoi
+              Le Projet EUreka</a></li>
+          
+          <li class="nav-item"><a href="#" class="nav-link " data-bs-toggle="modal" data-bs-target="#exampleModal1">Nous contacter</a></li>
+        </ul>
+      </header>
+      <!-- header end -->
+      <br>
+      <div class="row">
+        <h6 class="text-center"> Bienvenue sur la première plateforme de
+          prédiction de cas du en ligne</h6>
+      </div>
+      <br>
+
+      <div class="container text-center">
+        <div class="row align-items-center">
+          <!-- Formulaire -->
+          <div class="col">
+            <div class="card border-primary text-center">
+              <div class="card-header border-primary">
+                Remplir le formulaire pour la prédiction
+              </div>
+              <div class="card-body">
+                <form class="row g-3" name="form", method="POST",
+                  style="text-align: center;">
+
+                  <div class="col-md-1">
+
+                  </div>
+                  <div class="col-md-5">
+                    <label for="validationServer01" class="form-label">Pays</label>
+                    <div class="input-group mb-3">
+
+                      <select class="form-select" id="inputGroupSelect01"  name="choice">
+                        <option selected>Sélectionner le pays...</option>
+                        <option value="Benin"> Benin </option>
+                        <option value="Bresil">Bresil</option>
+                        <option value="bfa">Burkina Faso</option>
+                        <option value="Cameroun">Cameroun</option>
+                        <option value="civ"> Cote D'ivoire </option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Guinée"> Guinée </option>
+                        <option value="Kenya"> Kenya </option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Rca"> RCA</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Chad">Tchad</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <label for="validationServer02" class="form-label">Année</label>
+                    <input type="number" name="an" min="2021" max="2030"
+                      class="form-control" id="validationServer02" required>
+                  </div>
+                  <div class="col-md-1">
+
+                  </div>
+
+
+
+                  <div class="col-md-1">
+
+                  </div>
+                  <div class="col-md-5">
+                    <label for="validationServer01" class="form-label">Température</label>
+                    <input type="number" name="avgt" min="0" max="35"
+                      class="form-control " id="validationServer01" required>
+                  </div>
+                  <div class="col-md-5">
+                    <label for="validationServer02" class="form-label">Précipitation</label>
+                    <input type="number" name="avgp" min="0" max="5000"
+                      class="form-control" id="validationServer02" required>
+                  </div>
+                  <div class="col-md-1">
+
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-outline-primary" value="Submit"
+                      type="submit">Lancer</button>
+                  </div>
+
+                </form>
+                <br>
+                <P style="text-align: center;">Resultat aprés prédiciton :
+                  <strong> {{ output }}</strong> cas </p> 
+
+
+              </div>
+
+            </div>
+          </div>
+          <!-- Formulaire End-->
+          <div class="col-1"></div>
+          <!-- maps -->
+          <div class="col-5">
+            <div class=" card border-primary text-center">
+              <div class="card-header border-primary">Nombre de cas paludisme en
+                temps réel</div>
+              <div class="card-body text-primary">
+                <p class="card-text"><div class="map"><P><iframe width="100%"
+                        height="360px"
+                        src="https://gcp-europe-west1.app.carto.com/map/ef493fd3-ccbd-4151-ad0f-76adb3bfcec8"></iframe></p></div></p>
+              </div>
+            </div>
+          </div>
+          <!-- maps end -->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Container end-->
+
+
+
+
+
+
+    <!-- Fotter -->
+    <footer class="footer mt-auto py-3 bg-light text-center text-lg-start ">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase text-center">A propos de nous</h5>
+
+            <p>
+              DeepTeam est un groupe de 5 étudiants spécialiser en Big Data à l'ESTIAM Lyon. Le
+              groupe propose des solutions de e-santé, qui grace au Machine Learning,
+              permettra d'améliorer de stopper l'évolution de certaines maladies.
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column Nos notifications-->
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase text-center">Recevoir nos notifications</h5>
+            <br>
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text" id="addon-wrapping">@</span>
+              <input type="text" class="form-control" placeholder="Username"
+                aria-label="Username" aria-describedby="addon-wrapping">
+              <button class="btn btn-outline-success" type="button"
+                id="button-addon2">Envoyer</button>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase text-center">Suivez-Nous</h5>
+            <!-- Facebook -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"><i class="fa fa-facebook-f "></i></a>
+            <!-- Twitter -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"><i class="fa fa-twitter "></i></a>
+            <!-- Google -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"><i class="fa fa-google "></i></a>
+            <!-- Instagram -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"><i class="fa fa-instagram "></i></a>
+            <!-- Linkedin -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"><i class="fa fa-linkedin "></i></a>
+            <!-- Github -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"><i class="fa fa-github "></i></a>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0,
+        0.2);">
+        © 2020 Copyright:
+        <a class="text-dark" href="#">DeepTeam</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+
+    <!-- Modal Pourquoi Epi_Predict-->
+    <div class="modal" id="exampleModal" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable ">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title modal-title-center" id="exampleModalLabel">Pourquoi
+              EPI_PREDICT ?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Le paludisme est une maladie humaine fébrile aiguë causée par le
+            parasite Plasmodium qui se transmet par les piqûres de moustiques
+            anophèles femelles infectées. Deux de cinq espèces de plasmodies
+            responsables du paludisme humain sont particulièrement dangereux :
+            P. falciparum, le parasite provoquant le plus de décès qui est aussi
+            le plus répandu sur le continent africain, et P. vivax, l’espèce
+            dominante dans la plupart des pays en dehors de l’Afrique
+            subsaharienne.
+            <br> <br>Les premiers symptômes "fièvre, maux de tête et frissons",
+            apparaissent généralement 10 à 15 jours après la piqûre infectieuse
+            et peuvent être légers et difficiles à reconnaître. En l’absence
+            d’un traitement, le paludisme à P. falciparum peut évoluer vers une
+            affection grave voire mortelle dans les 24 heures.
+            <br> <br>Pour prévenir ce fléau , nous avons décidé de mettre en
+            place cette
+            application afin de prévenir les utilisateurs sur la dangerosité des
+            zones à fréquenter
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"
+              data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+     <!-- Modal Pourquoi Nous écrire -->
+     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Votre Message</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Email:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quitter</button>
+            <button type="button" class="btn btn-primary">Envoyer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
